@@ -21,12 +21,15 @@ function FormikWrapper({ children, ...props }) {
           onSubmit={handleSubmit}
         >
           <VStack>
-            {children?.map((child) => child)}
+            {Array.isArray(children)
+              ? children?.map((child) => child)
+              : children}
 
             <Button
               type="submit"
               width={props?.submitButton?.styles?.width}
               colorScheme={props?.submitButton?.styles?.colorScheme}
+              background={props?.submitButton?.styles?.background}
             >
               {props?.submitButton?.label}
             </Button>

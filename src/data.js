@@ -1,9 +1,11 @@
+export const roles = ["fe", "je", "approvar", "consumer"];
+
 export const users = [
   {
     id: 1,
     email: "fe@yopmail.com",
     password: "Test@123",
-    role: "fieldEngineer",
+    role: "fe",
   },
   {
     id: 2,
@@ -15,6 +17,6 @@ export const users = [
     id: 1,
     email: "je@yopmail.com",
     password: "Test@123",
-    role: "juniorEngineer",
+    role: "je",
   },
 ];

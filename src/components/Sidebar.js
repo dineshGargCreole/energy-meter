@@ -1,10 +1,13 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
+import { Link, useParams } from "react-router-dom";
 import React from "react";
 
 function Sidebar() {
+  const { role } = useParams();
+
   return (
     <Box
-      backgroundColor={"#43c4f2"}
+      backgroundColor={"#2477bf"}
       width={"250px"}
       height={"100vh"}
       color={"#fff"}
@@ -17,11 +20,13 @@ function Sidebar() {
       </Text>
       <VStack spacing={3}>
         <Text fontSize="md" textAlign={"center"}>
-          Home
+          <Link to={`/${role}`}>Home</Link>
         </Text>
-        <Text fontSize="md" textAlign={"center"}>
-          Capture Energy Reading
-        </Text>
+        {role === "fe" && (
+          <Text fontSize="md" textAlign={"center"}>
+            <Link to={`capture`}>Capture Energy Reading</Link>
+          </Text>
+        )}
       </VStack>
     </Box>
   );

@@ -1,8 +1,15 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import React from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("user");
+    navigate("/");
+  };
   return (
     <Box
       backgroundColor={"#e8e8e8"}
@@ -13,6 +20,9 @@ function Header() {
       paddingLeft={"270px"}
     >
       <HamburgerIcon />
+      <Button onClick={handleLogout} float="right">
+        Logout
+      </Button>
     </Box>
   );
 }

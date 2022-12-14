@@ -2,19 +2,25 @@ import React from "react";
 import { loginSchema } from "../schema";
 import FormikWrapper from "./FormikWrapper";
 import TextFieldWrapper from "./TextFieldWrapper";
+import { useNavigate } from "react-router-dom";
 import { users } from "../data";
 
 function Login() {
+  const navigate = useNavigate();
   const initialValues = {
     email: "",
     password: "",
   };
 
   const onSubmit = (values) => {
-    const user = users.filter(
+    const user = users.find(
       (user) => user.email === values.email && user.password === values.password
     );
-    console.log("usserr", user);
+
+    if (user !== undefined) {
+      sessionStorage.setItem("user", JSON.stringify(user));
+      navigate(`/${user.role}`);
+    }
   };
 
   return (
@@ -34,7 +40,8 @@ function Login() {
         label: "Login",
         styles: {
           width: "full",
-          colorScheme: "purple",
+          background: "#43c4f2",
+          // colorScheme: "#43c4f2",
         },
       }}
     >
